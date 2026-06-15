@@ -1,3 +1,5 @@
+We apologize, but Ubuntu 18.04 cannot be run in a root environment. Thank you for your understanding.
+
 # WebVM
 
 [![Discord server](https://img.shields.io/discord/988743885121548329?color=%235865F2&logo=discord&logoColor=%23fff)](https://discord.gg/yWRr2YnD9c)
