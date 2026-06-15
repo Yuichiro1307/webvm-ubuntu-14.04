@@ -12,6 +12,7 @@ RUN apt-get update && \
     netcat \
     python3 \
     gcc \
+    git \
     make
 
 RUN useradd -m user && echo "user:password" | chpasswd
