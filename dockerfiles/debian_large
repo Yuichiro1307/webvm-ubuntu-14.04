@@ -2,14 +2,8 @@ FROM --platform=linux/386 docker.io/i386/ubuntu:18.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Ubuntu 18.04 (Bionic) archived repositories
-RUN printf '%s\n' \
-'deb http://old-releases.ubuntu.com/ubuntu bionic main restricted universe multiverse' \
-'deb http://old-releases.ubuntu.com/ubuntu bionic-updates main restricted universe multiverse' \
-'deb http://old-releases.ubuntu.com/ubuntu bionic-security main restricted universe multiverse' \
-> /etc/apt/sources.list
-
-RUN apt-get update && apt-get -y upgrade && \
+RUN apt-get update && \
+    apt-get -y upgrade && \
     apt-get install -y \
     apt-utils \
     ca-certificates \
@@ -33,6 +27,13 @@ RUN apt-get update && apt-get -y upgrade && \
     procps \
     python3 \
     python3-pip \
+    python3-cryptography \
+    python3-jinja2 \
+    python3-numpy \
+    python3-pandas \
+    python3-scipy \
+    python3-six \
+    python3-yaml \
     ruby \
     vim \
     wget \
@@ -41,10 +42,12 @@ RUN apt-get update && apt-get -y upgrade && \
     iptables \
     kmod \
     netcat-openbsd \
-    openssh-server
+    openssh-server \
+    lshw \
+    lynx
 
-# Make a user, then copy over the /example directory
 RUN useradd -m user && echo "user:password" | chpasswd
+
 COPY --chown=user:user ./examples /home/user/examples
 RUN chmod -R +x /home/user/examples/lua
 
