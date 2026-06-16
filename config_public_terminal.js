@@ -1,23 +1,24 @@
-// The root OS image location, change to local filepath if serving locally
-export const diskImageUrl = "wss://disks.webvm.io/debian_buster_large_permis_fixed_01-06-2026.ext2";
-// The root filesystem backend type use "cloud" for serving remotely or "bytes" for serving locally
+export const diskImageUrl = "LOCAL_OR_CLOUD_IMAGE.ext2";
 export const diskImageType = "cloud";
-// Print an introduction message about the technology
-export const printIntro = true;
-// Is a graphical display needed
+
+export const printIntro = false;
 export const needsDisplay = true;
-// Executable full path (Required)
-export const cmd = "/bin/bash";
-// Arguments, as an array (Required)
-export const args = ["--login"];
-// Optional extra parameters
+
+export const cmd = "/usr/bin/startxfce4";
+export const args = [];
+
 export const opts = {
-	// Environment variables
-	env: ["HOME=/home/user", "TERM=xterm", "USER=user", "SHELL=/bin/bash", "EDITOR=vim", "LANG=en_US.UTF-8", "LC_ALL=C"],
-	// Current working directory
-	cwd: "/home/user",
-	// User id
-	uid: 1000,
-	// Group id
-	gid: 1000
+	env: [
+		"HOME=/root",
+		"TERM=xterm",
+		"USER=root",
+		"SHELL=/bin/bash",
+		"EDITOR=vim",
+		"LANG=en_US.UTF-8",
+		"LC_ALL=C",
+		"DISPLAY=:0"
+	],
+	cwd: "/root",
+	uid: 0,
+	gid: 0
 };
